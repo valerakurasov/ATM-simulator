@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="create-table-banknote" author="Valera">
+        <preConditions>
+            <not>
+                <tableExists tableName="banknote"/>
+            </not>
+        </preConditions>
+        <sql>
+            CREATE TABLE banknote
+            (
+                id           BIGSERIAL PRIMARY KEY NOT NULL,
+                denomination INT                   NOT NULL,
+                count        INT                   NOT NULL
+            )
+        </sql>
+    </changeSet>
+
+    <changeSet id="add" author="Valera">
+        <preConditions>
+            <tableExists tableName="banknote"/>
+        </preConditions>
+        <sql>
+            INSERT INTO banknote(denomination, count)
+            VALUES (10, 0),
+                   (50, 0),
+                   (100, 0),
+                   (200, 0),
+                   (500, 0),
+                   (1000, 0),
+                   (2000, 0),
+                   (5000, 0)
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
