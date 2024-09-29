@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.PositiveOrZero;
 import org.example.validator.Denomination;
 import org.example.controller.response.BanknoteResponse;
@@ -16,6 +17,7 @@ import java.util.Map;
  * Выдает купюры GET /currencies/{sum}
  * Ответ включает информацию о количестве купюр каждого номинала для выдачи
  * (10, 50, 100, 200 500, 1000, 2000, 5000)
+ *
  * @author Valera
  * @version 1.0
  */
@@ -26,5 +28,5 @@ public interface ATMController {
     void putBanknotes(@RequestBody Map<@Denomination Integer, @PositiveOrZero Integer> putBanknotesRequest);
 
     @GetMapping("/{sum}")
-    List<BanknoteResponse> getBanknotes(@PathVariable int sum);
+    List<BanknoteResponse> getBanknotes(@Min(10) @PathVariable int sum);
 }
