@@ -7,6 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Данный репозиторий позволяет более удобным способом отправлять батчи запросов с использованием непосредственно JdbcTemplate.
+ *
+ * @author Valera
+ * @version 1.0
+ */
 @Repository
 @RequiredArgsConstructor
 public class BanknoteBatchDaoImpl implements BanknoteBatchDao {

@@ -6,6 +6,13 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Set;
 
+/**
+ * Данный валидатор непосредственно валидирует банкноты
+ * Банкноты, номинал которых отсутствуюет в списке возможных, не пройдут валидацию
+ *
+ * @author Valera
+ * @version 1.0
+ */
 public class DenominationValidator implements ConstraintValidator<Denomination, Integer> {
     @Value("${atm.available-banknotes.put}")
     private Set<Integer> availableDenominations;
