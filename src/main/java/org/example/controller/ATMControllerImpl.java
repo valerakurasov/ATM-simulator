@@ -28,7 +28,7 @@ public class ATMControllerImpl implements ATMController {
 
     @Override
     @Transactional
-    public List<BanknoteResponse> getBanknotes(int sum) { // map to response
+    public List<BanknoteResponse> getBanknotes(int sum) {
         return banknoteService.getBanknotes(sum).stream().map(banknoteMapper::banknoteDtoToBanknoteResponse).toList();
     }
 }
